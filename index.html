@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 23rd Birthday, My Love 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff6b9d;
+    --rose: #ff4081;
+    --lilac: #c77dff;
+    --lavender: #e8c7ff;
+    --peach: #ffb347;
+    --cream: #fff8f0;
+    --white: #ffffff;
+    --dark: #3d2c3e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== FLOATING HEARTS BG ===== */
+  .hearts-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .heart-float {
+    position: absolute;
+    bottom: -60px;
+    font-size: 1.4rem;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+  }
+
+  /* ===== CONFETTI ===== */
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: confettiFall linear infinite;
+    border-radius: 2px;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px dashed #ffb3cd;
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--rose);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    transition: all 0.25s;
+    background: var(--lavender);
+  }
+  .nav-links a:hover {
+    background: var(--pink);
+    color: white;
+    transform: scale(1.08) rotate(-2deg);
+  }
+
+  /* ===== HERO ===== */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    background: linear-gradient(160deg, #fff0fa 0%, #ffe8f5 40%, #f3e8ff 100%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--lavender);
+    color: var(--lilac);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    animation: pop 0.6s ease both;
+  }
+  .hero-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    color: var(--rose);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    animation: slideUp 0.7s ease both 0.1s;
+    text-shadow: 3px 3px 0px #ffb3cd;
+  }
+  .hero-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    color: var(--lilac);
+    margin-bottom: 2rem;
+    animation: slideUp 0.7s ease both 0.2s;
+  }
+  .hero-msg {
+    max-width: 520px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #6d4c7a;
+    animation: slideUp 0.7s ease both 0.3s;
+    margin-bottom: 2.5rem;
+  }
+  .hero-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink), var(--lilac));
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(255,107,157,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: pop 0.6s ease both 0.4s;
+  }
+  .hero-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 28px rgba(255,107,157,0.5);
+  }
+  .big-age {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(5rem, 18vw, 11rem);
+    color: rgba(255,107,157,0.12);
+    position: absolute;
+    bottom: -1rem;
+    right: 5%;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+  .section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--rose);
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+  .section-sub {
+    text-align: center;
+    color: #a07ab0;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  .wavy-sep {
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    margin: 0;
+    padding: 1.5rem 0;
+    color: #ffb3cd;
+    background: white;
+  }
+
+  /* ===== OUR ANNI PHOTOS ===== */
+  #ouranni {
+    background: linear-gradient(180deg, #fff0fa, #f7eeff);
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+  .photo-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 20px rgba(199,125,255,0.18);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .photo-card:hover {
+    transform: translateY(-6px) rotate(1.5deg);
+    box-shadow: 0 12px 36px rgba(199,125,255,0.3);
+  }
+  .photo-card:nth-child(even):hover { transform: translateY(-6px) rotate(-1.5deg); }
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #ffe0f0, #e8d5ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #c77dff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-placeholder:hover { background: linear-gradient(135deg, #ffd0e8, #d8c0ff); }
+  .photo-placeholder input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .photo-placeholder .upload-icon { font-size: 2.4rem; }
+  .photo-placeholder img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-caption-wrap { padding: 0.75rem 1rem; }
+  .photo-caption {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark);
+    text-align: center;
+    outline: none;
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: 'Quicksand', sans-serif;
+    cursor: text;
+  }
+  .photo-caption::placeholder { color: #c77dff; }
+
+  /* ===== MONTHSARY TIMELINE ===== */
+  #monthsary {
+    background: white;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #ffb3cd, #c77dff, #ffb3cd);
+    transform: translateX(-50%);
+    border-radius: 99px;
+  }
+  .tl-item {
+    display: flex;
+    gap: 2rem;
+    padding: 1.2rem 0;
+    position: relative;
+    align-items: flex-start;
+  }
+  .tl-item:nth-child(odd)  { flex-direction: row; }
+  .tl-item:nth-child(even) { flex-direction: row-reverse; }
+  .tl-content {
+    flex: 1;
+    background: linear-gradient(135deg, #fff0fa, #f4e8ff);
+    border-radius: 18px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: 0 4px 18px rgba(255,107,157,0.12);
+    max-width: 380px;
+    transition: transform 0.3s;
+    position: relative;
+  }
+  .tl-item:nth-child(odd)  .tl-content { margin-left: auto; margin-right: 2rem; }
+  .tl-item:nth-child(even) .tl-content { margin-right: auto; margin-left: 2rem; }
+  .tl-content:hover { transform: scale(1.03); }
+  .tl-dot {
+    position: absolute;
+    left: 50%;
+    top: 1.8rem;
+    transform: translateX(-50%);
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, var(--pink), var(--lilac));
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 10px rgba(255,107,157,0.4);
+    z-index: 2;
+  }
+  .tl-month {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .tl-photo-area {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #ffe0f0, #e8d5ff);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #c77dff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .tl-photo-area:hover { background: linear-gradient(135deg, #ffd0e8, #d8c0ff); }
+  .tl-photo-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .tl-photo-area img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tl-note {
+    font-size: 0.88rem;
+    color: #6d4c7a;
+    line-height: 1.6;
+    outline: none;
+    min-height: 2.5rem;
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    resize: none;
+    overflow: hidden;
+  }
+
+  /* ===== LOVE NOTE ===== */
+  #lovenote {
+    background: linear-gradient(160deg, #fff0fa, #ede8ff);
+  }
+  .note-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 8px 40px rgba(199,125,255,0.2);
+    position: relative;
+    text-align: center;
+  }
+  .note-card::before {
+    content: '❝';
+    font-size: 6rem;
+    color: #ffe0f0;
+    position: absolute;
+    top: -1.5rem;
+    left: 1.5rem;
+    line-height: 1;
+    font-family: serif;
+  }
+  .note-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--dark);
+    line-height: 1.7;
+    outline: none;
+    width: 100%;
+    border: none;
+    background: transparent;
+    resize: none;
+    text-align: center;
+    font-weight: 600;
+  }
+  .note-from {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--pink);
+    outline: none;
+    border: none;
+    background: transparent;
+    text-align: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+  }
+  .note-hint {
+    font-size: 0.78rem;
+    color: #c77dff;
+    margin-top: 1.5rem;
+  }
+
+  /* ===== BIRTHDAY CAKE ===== */
+  .cake-section {
+    background: white;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .cake-emoji {
+    font-size: 5rem;
+    display: block;
+    animation: wiggle 1.5s infinite;
+  }
+  @keyframes wiggle {
+    0%,100% { transform: rotate(-6deg); }
+    50%      { transform: rotate(6deg); }
+  }
+
+  /* ===== SPARKLE CURSOR ===== */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    font-size: 1.2rem;
+    animation: sparkleOut 0.7s ease forwards;
+  }
+  @keyframes sparkleOut {
+    0%   { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: scale(0.3) translateY(-30px); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .timeline::before { left: 16px; }
+    .tl-item,
+    .tl-item:nth-child(even) { flex-direction: column !important; padding-left: 50px; }
+    .tl-item:nth-child(odd)  .tl-content,
+    .tl-item:nth-child(even) .tl-content { margin: 0; max-width: 100%; }
+    .tl-dot { left: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="#home" class="nav-logo">My Love 💖</a>
+  <div class="nav-links">
+    <a href="#home">🏠 Home</a>
+    <a href="#ouranni">📸 Our Anni</a>
+    <a href="#monthsary">🗓️ Monthsary</a>
+    <a href="#lovenote">💌 Love Note</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home">
+  <div class="hero-badge">My Gift </div>
+  <h1 class="hero-title">Happy 23rd Birthday!</h1>
+  <p class="hero-sub">From your alu</p>
+  <p class="hero-msg">
+   i hope you'll enjoy this day of yours, and my gift mwamwa
+  </p>
+  <a href="#ouranni" class="hero-btn">See Our Memories </a>
+  <div class="big-age">23</div>
+</section>
+
+<div class="wavy-sep">I love you I love you I love you I love you I love you I love you I love you</div>
+
+<!-- Our Anni Photos -->
+<section id="ouranni">
+  <div class="section-inner">
+    <h2 class="section-title">Our Photos 📸</h2>
+    <p class="section-sub">i hope you'll enjoy these!!</p>
+    <div class="photo-grid" id="anniGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="wavy-sep">🌙 ⭐ 💜 ⭐ 🌙</div>
+
+<!-- Monthsary Timeline -->
+<section id="monthsary">
+  <div class="section-inner">
+    <h2 class="section-title">Our Monthsaries 🗓️</h2>
+    <p class="section-sub">Every month has been a blessing with you ✨</p>
+    <div class="timeline" id="tlContainer">
+      <!-- Items injected by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="wavy-sep">💌 🌷 ❤️ 🌷 💌</div>
+
+<!-- Love Note -->
+<section id="lovenote">
+  <div class="section-inner">
+    <h2 class="section-title">A Note From My Heart 💌</h2>
+    <p class="section-sub">Edit this message — make it yours!</p>
+    <div class="note-card">
+      <textarea class="note-text" rows="6" spellcheck="false">My love, I never imagined I'd be this lucky — to have you, your laugh, your heart, and your stubborn little face beside me every single day. You make ordinary moments feel like magic. Happy 23rd birthday, my forever person. Here's to forever with you. 🌸</textarea>
+      <textarea class="note-from" rows="1" spellcheck="false">— Your [Name] ❤️</textarea>
+      <p class="note-hint">💡 Click the text above to personalize it!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Birthday cake section -->
+<div class="cake-section">
+  <span class="cake-emoji">🎂</span>
+  <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
+  <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd, always and forever 💕</p>
+</div>
+
+<script>
+
+
+// ===== FLOATING HEARTS =====
+const hb=document.getElementById('heartsBg');
+const emojis=['💕','💖','🌸','✨','💗','🌷','💓','⭐','💝'];
+for(let i=0;i<22;i++){
+  const h=document.createElement('div');
+  h.className='heart-float';
+  h.textContent=emojis[i%emojis.length];
+  h.style.left=Math.random()*100+'%';
+  h.style.animationDuration=(Math.random()*12+10)+'s';
+  h.style.animationDelay=(Math.random()*14)+'s';
+  h.style.fontSize=(Math.random()*1.2+0.8)+'rem';
+  hb.appendChild(h);
+}
+
+// ===== SPARKLE CURSOR =====
+const sparkles=['✨','💖','🌸','⭐','💕'];
+document.addEventListener('mousemove',e=>{
+  if(Math.random()>0.85){
+    const s=document.createElement('div');
+    s.className='sparkle';
+    s.textContent=sparkles[Math.floor(Math.random()*sparkles.length)];
+    s.style.left=e.clientX+'px';
+    s.style.top=e.clientY+'px';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),700);
+  }
+});
+
+// ===== OUR ANNI PHOTO GRID =====
+const anniLabels=[
+  'My fav Pic of uS 💕','your drawing of us <3','I remember this being our first date','YES!, I will marry you',
+  'Sweet us','I see this as an iconic pic of us','nakaplan mag IBT YEY','I love us being silly', ' i\'ll always love you'
+];
+const anniGrid=document.getElementById('anniGrid');
+anniLabels.forEach((label,i)=>{
+  const card=document.createElement('div');
+  card.className='photo-card';
+  card.innerHTML=`
+    <div class="photo-placeholder">
+      <img src="photos/anni${i+1}.jpg" alt="${label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;width:100%;height:100%;color:#c77dff;font-weight:600;font-size:0.9rem;">
+        <span style="font-size:2.4rem">📷</span>
+        <span>anni${i+1}.jpg</span>
+      </div>
+    </div>
+    <div class="photo-caption-wrap">
+      <input class="photo-caption" type="text" placeholder="${label}" value="">
+    </div>
+  `;
+  anniGrid.appendChild(card);
+});
+
+// ===== MONTHSARY TIMELINE =====
+const months=[
+  '1st Monthsary 🌸','2nd Monthsary 💕','3rd Monthsary 🌷','4th Monthsary ✨',
+  '5th Monthsary 💜','6th Monthsary 🥳','7th Monthsary 🌙','8th Monthsary 💖',
+  '9th Monthsary 🌟','10th Monthsary 💞','11th Monthsary 🎀','12th Monthsary 💍'
+];
+const tlC=document.getElementById('tlContainer');
+months.forEach((m,i)=>{
+  const item=document.createElement('div');
+  item.className='tl-item';
+  item.innerHTML=`
+    <div class="tl-dot"></div>
+    <div class="tl-content">
+      <div class="tl-month">${m}</div>
+      <div class="tl-photo-area">
+        <video src="videos/month${i+1}.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;" muted loop playsinline onerror="this.style.display='none';this.nextElementSibling.style.display='block'"></video>
+        <span style="display:none">🎥 month${i+1}.mp4</span>
+      </div>
+      <textarea class="tl-note" ...></textarea>
+    </div>
+  `;
+  tlC.appendChild(item);
+});
+
+// ===== TEXTAREA AUTO RESIZE =====
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=el.scrollHeight+'px';
+}
+
+// Auto play/pause videos on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('video').forEach(video => {
+  observer.observe(video);
+});
+
+</script>
+</body>
+</html>
