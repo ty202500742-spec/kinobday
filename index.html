@@ -743,7 +743,7 @@
       <a href="#home">Happy birthday</a>
       <a href="#ouranni">Pictures of us</a>
       <a href="#monthsary">Our Memories</a>
-      <a href="#lovenote">Love Note</a>
+      <a href="#lovenote">Birthday Note</a>
     </div>
   </nav>
 
@@ -752,11 +752,22 @@
     <h1 class="hero-title">Happy 23rd Birthday Kino!</h1>
     <p class="hero-sub">From your alu</p>
     <p class="hero-msg">
-      This was supposed to be my 4th anniversary gift for you, but it was finals, and i didnt have time to do it...
-      sooooo..
+      
       i hope you'll enjoy this day of yours, and my gift mwamwa
     </p>
-    <a href="#ouranni" class="hero-btn">See the first part hehe</a>
+    <div class="audio-wrap" style="max-width:420px;margin-bottom:1.5rem;">
+  <button class="audio-play-btn" onclick="toggleAudio(this, 'audHero')" aria-label="Play greeting">
+    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+  </button>
+  <span class="audio-label">Play me💌</span>
+  <div class="audio-bar-wrap" onclick="seekAud(event,'audHero')">
+    <div class="audio-bar-fill" id="fillHero"></div>
+  </div>
+  <span class="audio-time" id="timeHero">0:00</span>
+  <span class="audio-petals">🌸</span>
+  <audio id="audHero" src="audio/greeting.aac"></audio>
+</div>
+<a href="#ouranni" class="hero-btn">See the first part hehe</a>
     <div class="big-age">23</div>
   </section>
 
@@ -787,23 +798,43 @@
       <h2 class="section-title">A Note From My Heart 💌</h2>
       <p class="section-sub">I know this is'nt a real letter but its from my heart, I love you forever</p>
       <div class="note-card">
-        <textarea class="note-text" rows="6"
-          spellcheck="false">My love, I never imagined I'd be this lucky — to have you, your laugh, your heart, and your stubborn little face beside me every single day. You make ordinary moments feel like magic. Happy 23rd birthday, my forever person. Here's to forever with you. 🌸</textarea>
-        <textarea class="note-from" rows="1" spellcheck="false">— Your [Name] ❤️</textarea>
-        <p class="note-hint">💡 Click the text above to personalize it!</p>
+        <p class="note-text">‎My dearest kino
+‎
+‎Happy 23rd birthday!! I'm so happy that you turned 23 this year, 
+now you're more of a mommy na, hahahahahha jk lng, but I'd like that. 
+I hope you'll enjoy this special day of yours, it may not be special to you, 
+because you hate your birthday, but it is to me. Its to celebrate the day you were born, 
+the day where you'd grow up each year. I dont want to sound really formal, I just want to let you know that I love you super muchhh mwamwa, 
+you have been the greatest gift I have wished for and received, I hope you will appreciate this small gift that I made for you, for your special day. Theres a surprise for you at the bottom, its not much but you should see what it does hehe</p>
+<p class="note-from">— Your Alu ❤️</p>
       </div>
+       <div class="audio-wrap" style="max-width:420px;margin:1.5rem auto;">
+    <button class="audio-play-btn" onclick="toggleAudio(this, 'audLove')" aria-label="Play love note">
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </button>
+    <span class="audio-label">Play me 💕</span>
+    <div class="audio-bar-wrap" onclick="seekAud(event,'audLove')">
+      <div class="audio-bar-fill" id="fillLove"></div>
+    </div>
+    <span class="audio-time" id="timeLove">0:00</span>
+    <span class="audio-petals">🌹</span>
+    <audio id="audLove" src="audio/birthdaynote.aac"></audio>
+  </div>
     </div>
   </section>
 
   <div class="cake-section" id="cakeSection">
-    <span class="cake-emoji">🎂</span>
-    <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
-    <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
-    <div id="roseRainWrap">
-      <button id="roseRainBtn" onclick="toggleRoseRain()">press me </button>
-      <p class="btn-hint">press it hehe</p>
-    </div>
+  <span class="cake-emoji">🎂</span>
+  <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
+  <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
+
+ 
+
+  <div id="roseRainWrap">
+    <button id="roseRainBtn" onclick="toggleRoseRain()">press me</button>
+    <p class="btn-hint">press it hehe</p>
   </div>
+</div>
 
   <!-- Hidden offscreen canvas pool for rendering 3D roses -->
   <div id="rosePool" style="position:fixed;left:-9999px;top:-9999px;pointer-events:none;"></div>
@@ -896,7 +927,7 @@ item.innerHTML = `
       </div>
       <span class="audio-time" id="time${i}">0:00</span>
       <span class="audio-petals">${petalEmojis[i]}</span>
-      <audio id="aud${i}" src="audio/month${i + 1}.mp3"></audio>
+      <audio id="aud${i}" src="audio/month${i + 1}.aac"></audio>
     </div>
     <div class="tl-note">${m.note}</div>
   </div>`;
