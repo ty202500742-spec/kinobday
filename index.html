@@ -602,6 +602,48 @@
       }
     }
 
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+
+  .letter-wrap { max-width: 580px; margin: 0 auto; }
+
+ 
+  .letter-paper {
+    background: #fffdf9;
+    border: 1.5px solid #f0caca;
+    border-radius: 0 0 12px 12px;
+    padding: 2.5rem 2.8rem 2rem;
+    position: relative;
+    background-image: repeating-linear-gradient(
+      to bottom, transparent, transparent calc(2.05em - 1px),
+      #f5d5d5 calc(2.05em - 1px), #f5d5d5 2.05em
+    );
+    background-position: 0 calc(2.5rem + 0.15em);
+  }
+
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    left: 56px; top: 0; bottom: 0;
+    width: 1.5px;
+    background: #fbbcbc;
+    opacity: 0.5;
+  }
+
+  .letter-date  { text-align: right; font-family: 'Dancing Script', cursive; font-size: 1rem; color: #b07070; margin-bottom: 1.4rem; }
+  .letter-salutation { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #8b0000; font-weight: 700; margin-bottom: 1.2rem; }
+  .letter-body  { font-family: 'Dancing Script', cursive; font-size: 1.15rem; color: #3d1a1a; line-height: 2.05; margin-bottom: 1.5rem; }
+  .letter-body p { margin-bottom: 1em; }
+  .letter-close { font-family: 'Dancing Script', cursive; font-size: 1.1rem; color: #6d3030; margin-top: 1rem; }
+  .letter-sig   { font-family: 'Dancing Script', cursive; font-size: 1.7rem; color: #8b0000; font-weight: 700; }
+  .letter-hearts { text-align: right; font-size: 1.1rem; margin-top: 1rem; letter-spacing: 0.2rem; }
+  .wax-seal {
+    width: 54px; height: 54px;
+    background: radial-gradient(circle at 38% 35%, #e74c3c, #8b0000);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin: 1.5rem auto 0;
+    border: 3px solid #c0392b;
+  }
+
     #roseRainBtn:hover {
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 14px 40px rgba(194, 24, 91, 0.6);
@@ -623,7 +665,7 @@
       position: fixed;
       top: -120px;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 9500;
       animation: roseDrop linear forwards;
     }
 
@@ -762,10 +804,36 @@
       font-size: 14px;
       flex-shrink: 0;
     }
+
+    #surpriseOverlay.active {
+  display: flex !important;
+}
+
   </style>
 </head>
 
 <body>
+
+  <!-- SPLASH SCREEN — must be first in body -->
+  <div id="splashScreen" style="
+    position: fixed; inset: 0; z-index: 9999;
+    background: linear-gradient(160deg, #fff0f0, #ffe8e8);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1.2rem;
+    font-family: 'Dancing Script', cursive;
+  ">
+    <div style="font-size:3rem">🌹</div>
+    <div style="font-size:2.2rem; color:#8b0000; font-weight:700">Happy Birthday, Kino!</div>
+    <button onclick="openGift()" style="
+      background: linear-gradient(135deg,#c0392b,#8b0000);
+      color:white; border:none; border-radius:999px;
+      padding:0.9rem 2.4rem; font-size:1.2rem;
+      font-family:'Dancing Script',cursive; font-weight:700;
+      cursor:pointer; box-shadow:0 6px 20px rgba(192,57,43,0.4);
+    ">Open your gift 💌</button>
+  </div>
+
+
   <audio id="bgMusic" loop>
     <source src="audio/music.mp3" type="audio/mpeg">
   </audio>
@@ -867,36 +935,71 @@
         <audio id="audLove" src="audio/bdaynote.aac"></audio>
       </div>
       
-      <div class="note-card">
-        <p class="note-text">‎My dearest kino
-          ‎
-          ‎Happy 23rd birthday!! I'm so happy that you turned 23 this year,
-          now you're more of a mommy na, hahahahahha jk lng, but I'd like that.
-          I hope you'll enjoy this special day of yours, it may not be special to you,
-          because you hate your birthday, but it is to me. Its to celebrate the day you were born,
-          the day where you'd grow up each year. I dont want to sound really formal, I just want to let you know that I
-          love you super muchhh mwamwa,
-          you have been the greatest gift I have wished for and received, I hope you will appreciate this small gift
-          that I made for you, for your special day.
-          Theres a surprise for you at the bottom, its not much but you should see what it does hehe.</p>
-        <p class="note-from">— Your Alu ❤️</p>
-      </div>
+     <div class="letter-wrap">
+  
+  <div class="letter-paper">
+    <div class="letter-date">May 27, 2026 </div>
+    <div class="letter-salutation">My dearest Kino,</div>
+    <div class="letter-body">
+      <p>Happy 23rd birthday!! I'm so happy that you turned 23 this year, now you're more of a mommy na, hahahahaha jk lng, but I'd like that. 🥰</p>
+      <p>I hope you'll enjoy this special day of yours. It may not feel special to you because you hate your birthday, but it is to me. It's a day to celebrate the day you were born, the day where you grow a little more each year.</p>
+      <p>I don't want to sound really formal. I just want to let you know that I love you super muchhh mwamwa. You have been the greatest gift I have ever wished for and received.</p>
+      <p>I hope you will appreciate this small gift that I made for you, for your special day. There's a surprise for you at the bottom — it's not much, but you should see what it does hehe. 🎂</p>
+    </div>
+    <div class="letter-close">With all my love, always and forever,</div>
+    <div class="letter-sig">— Your Alu</div>
+    <div class="letter-hearts">🍄🌹💕💕💕</div>
+  </div>
+  
+</div>
       
     </div>
   </section>
 
   <div class="cake-section" id="cakeSection">
-    <span class="cake-emoji">🎂</span>
-    <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
-    <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
+  <span class="cake-emoji">🎂</span>
+  <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
+  <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
 
-
-
-    <div id="roseRainWrap">
-      <button id="roseRainBtn" onclick="toggleRoseRain()">press me</button>
-      <p class="btn-hint">press it hehe</p>
-    </div>
+  <div id="roseRainWrap">
+    <button id="roseRainBtn" onclick="toggleRoseRain()">press me</button>
+    <p class="btn-hint">press it hehe</p>
   </div>
+</div>
+
+<!-- SURPRISE OVERLAY -->
+<div id="surpriseOverlay" style="
+  display:none;
+  position:fixed; inset:0; z-index:10000;
+  background:rgba(20,0,0,0.82);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem;
+">
+  <div id="surpriseMsg" style="
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(1.6rem,5vw,2.8rem);
+    color:#fff;
+    line-height:1.9;
+    max-width:600px;
+    opacity:0;
+    transition:opacity 1.2s ease;
+  "></div>
+  <button onclick="closeSurprise()" style="
+    margin-top:2.5rem;
+    background:linear-gradient(135deg,#c0392b,#8b0000);
+    color:white; border:none; border-radius:999px;
+    padding:0.8rem 2rem;
+    font-family:'Dancing Script',cursive;
+    font-size:1.3rem; font-weight:700;
+    cursor:pointer;
+    box-shadow:0 4px 18px rgba(192,57,43,0.4);
+  ">mwamwa 💕</button>
+</div>
+
+<audio id="surpriseAudio" src="audio/surprise.mp3"></audio>
 
   <!-- Hidden offscreen canvas pool for rendering 3D roses -->
   <div id="rosePool" style="position:fixed;left:-9999px;top:-9999px;pointer-events:none;"></div>
@@ -920,40 +1023,16 @@
   document.getElementById("bgMusic").volume = val / 100;
 }
 
-    window.addEventListener("load", () => {
+   function openGift() {
   const music = document.getElementById("bgMusic");
   music.volume = 0.1;
+  music.play();
 
-  // Create splash overlay
-  const splash = document.createElement("div");
-  splash.style.cssText = `
-    position: fixed; inset: 0; z-index: 9999;
-    background: linear-gradient(160deg, #fff0f0, #ffe8e8);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 1.2rem;
-    font-family: 'Dancing Script', cursive;
-  `;
-  splash.innerHTML = `
-    <div style="font-size:3rem">🌹</div>
-    <div style="font-size:2.2rem; color:#8b0000; font-weight:700">Happy Birthday, Kino!</div>
-    <button style="
-      background: linear-gradient(135deg,#c0392b,#8b0000);
-      color:white; border:none; border-radius:999px;
-      padding:0.9rem 2.4rem; font-size:1.2rem;
-      font-family:'Dancing Script',cursive; font-weight:700;
-      cursor:pointer; box-shadow:0 6px 20px rgba(192,57,43,0.4);
-    ">Open your gift 💌</button>
-  `;
-
-  document.body.appendChild(splash);
-
-  splash.querySelector("button").addEventListener("click", () => {
-    music.play();
-    splash.style.transition = "opacity 0.8s";
-    splash.style.opacity = "0";
-    setTimeout(() => splash.remove(), 800);
-  });
-});
+  const splash = document.getElementById("splashScreen");
+  splash.style.transition = "opacity 0.8s";
+  splash.style.opacity = "0";
+  setTimeout(() => splash.remove(), 800);
+}
 
     // ===== FLOATING HEARTS =====
     const hb = document.getElementById('heartsBg');
@@ -1259,37 +1338,87 @@
       setTimeout(() => el.remove(), duration * 1000);
     }
 
-    function toggleRoseRain() {
-      const btn = document.getElementById('roseRainBtn');
-      if (raining) {
-        raining = false;
-        clearInterval(rainInterval);
-        btn.textContent = 'press me';
-        return;
-      }
-      raining = true;
-      btn.textContent = 'Happy birthday, my love!';
+    // Your own message lines to show while music plays
+const surpriseLines = [
+  "Ikaw parin ang uwian",
+  "Mahal ikaw ang uuwian...",
+  "At kung umabot man sa dulo, at tatanda na tayo",
+  "Ikaw parin ang uuwian",
+  "At kahit na mag hirap tayo",
+  "'di na magbabago",
+  "Ikaw parin ang uuwian",
+  "ikaw lang ang uuwian",
+];
 
-      // Initial burst
-      const burst = rosesReady ? 20 : 0;
-      for (let i = 0; i < burst; i++) setTimeout(spawnFallingRose, i * 80);
+function toggleRoseRain() {
+  const btn = document.getElementById('roseRainBtn');
+  if (raining) {
+    raining = false;
+    clearInterval(rainInterval);
+    btn.textContent = 'press me';
+    return;
+  }
 
-      rainInterval = setInterval(() => {
-        if (!raining) return;
-        const n = 2 + Math.floor(Math.random() * 3);
-        for (let i = 0; i < n; i++) setTimeout(spawnFallingRose, i * 100);
-      }, 400);
+  // Stop bg music, play surprise song, show overlay
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.pause();
 
-      // If roses not ready yet, retry burst once they are
-      if (!rosesReady) {
-        const waitForRoses = setInterval(() => {
-          if (rosesReady) {
-            clearInterval(waitForRoses);
-            for (let i = 0; i < 20; i++) setTimeout(spawnFallingRose, i * 80);
-          }
-        }, 200);
-      }
+  const overlay = document.getElementById('surpriseOverlay');
+  overlay.classList.add('active');
+
+  const surpriseAudio = document.getElementById('surpriseAudio');
+  surpriseAudio.volume = 0.85;
+  surpriseAudio.play();
+
+  // Show message lines one by one
+  const msgEl = document.getElementById('surpriseMsg');
+  msgEl.style.opacity = '0';
+  msgEl.innerHTML = '';
+
+  let lineIndex = 0;
+  function showNextLine() {
+    if (lineIndex < surpriseLines.length) {
+      msgEl.innerHTML += (lineIndex > 0 ? '<br>' : '') + surpriseLines[lineIndex];
+      lineIndex++;
+      setTimeout(showNextLine, 3200);
     }
+  }
+  setTimeout(() => {
+    msgEl.style.opacity = '1';
+    showNextLine();
+  }, 600);
+
+  // Start rose rain in background
+  raining = true;
+  btn.textContent = 'Happy birthday, my love!';
+
+  const burst = 20;
+  for (let i = 0; i < burst; i++) setTimeout(spawnFallingRose, i * 80);
+
+  rainInterval = setInterval(() => {
+    if (!raining) return;
+    const n = 2 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < n; i++) setTimeout(spawnFallingRose, i * 100);
+  }, 400);
+}
+
+function closeSurprise() {
+  const overlay = document.getElementById('surpriseOverlay');
+  overlay.classList.remove('active');
+
+  const surpriseAudio = document.getElementById('surpriseAudio');
+  surpriseAudio.pause();
+  surpriseAudio.currentTime = 0;
+
+  // Resume bg music
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.play();
+
+  // Stop rose rain
+  raining = false;
+  clearInterval(rainInterval);
+  document.getElementById('roseRainBtn').textContent = 'press me';
+}
   </script>
 </body>
 
