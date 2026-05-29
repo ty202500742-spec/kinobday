@@ -773,24 +773,30 @@
   <div class="hearts-bg" id="heartsBg"></div>
 
   <nav>
-    <a href="#home" class="nav-logo">happy birthday</a>
+    <a href="#home" class="nav-logo">happy birthday, Baby ko!!</a>
    <div class="nav-links">
   <a href="#home">Happy birthday</a>
   <a href="#ouranni">Pictures of us</a>
   <a href="#monthsary">Our Memories</a>
   <a href="#lovenote">Birthday Note</a>
   <button id="musicToggleBtn" onclick="toggleBgMusic()" style="
-    background: var(--lavender);
-    border: 2px solid transparent;
-    color: var(--dark);
-    font-weight: 600;
-    font-size: 0.85rem;
-    padding: 0.4rem 1rem;
-    border-radius: 999px;
-    cursor: pointer;
-    font-family: 'Quicksand', sans-serif;
-    transition: all 0.25s;
-  ">Pause music</button>
+  background: var(--lavender);
+  border: 2px solid transparent;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.25s;
+">Pause music</button>
+<div style="display:flex;align-items:center;gap:0.4rem;background:var(--lavender);padding:0.4rem 0.9rem;border-radius:999px;">
+  <span style="font-size:0.95rem;">🎵</span>
+  <input type="range" id="volumeSlider" min="0" max="100" value="10"
+    oninput="setBgVolume(this.value)"
+    style="width:70px;height:4px;cursor:pointer;accent-color:var(--rose);">
+</div>
 </div>
   </nav>
 
@@ -820,7 +826,7 @@
     <div class="big-age">23</div>
   </section>
 
-  <div class="wavy-sep">I love you I love you I love you </div>
+  <div class="wavy-sep">I love you </div>
 
   <section id="ouranni">
     <div class="section-inner">
@@ -846,6 +852,21 @@
     <div class="section-inner">
       <h2 class="section-title">A Note From My Heart 💌</h2>
       <p class="section-sub">I know this is'nt a real letter but its from my heart, I love you forever</p>
+        <div class="audio-wrap" style="max-width:420px;margin:1.5rem auto;">
+        <button class="audio-play-btn" onclick="toggleAudio(this, 'audLove')" aria-label="Play love note">
+          <svg viewBox="0 0 24 24">
+            <polygon points="5,3 19,12 5,21" />
+          </svg>
+        </button>
+        <span class="audio-label">Play me 💕</span>
+        <div class="audio-bar-wrap" onclick="seekAud(event,'audLove')">
+          <div class="audio-bar-fill" id="fillLove"></div>
+        </div>
+        <span class="audio-time" id="timeLove">0:00</span>
+        <span class="audio-petals">🌹</span>
+        <audio id="audLove" src="audio/bdaynote.aac"></audio>
+      </div>
+      
       <div class="note-card">
         <p class="note-text">‎My dearest kino
           ‎
@@ -860,20 +881,7 @@
           Theres a surprise for you at the bottom, its not much but you should see what it does hehe.</p>
         <p class="note-from">— Your Alu ❤️</p>
       </div>
-      <div class="audio-wrap" style="max-width:420px;margin:1.5rem auto;">
-        <button class="audio-play-btn" onclick="toggleAudio(this, 'audLove')" aria-label="Play love note">
-          <svg viewBox="0 0 24 24">
-            <polygon points="5,3 19,12 5,21" />
-          </svg>
-        </button>
-        <span class="audio-label">Play me 💕</span>
-        <div class="audio-bar-wrap" onclick="seekAud(event,'audLove')">
-          <div class="audio-bar-fill" id="fillLove"></div>
-        </div>
-        <span class="audio-time" id="timeLove">0:00</span>
-        <span class="audio-petals">🌹</span>
-        <audio id="audLove" src="audio/bdaynote.aac"></audio>
-      </div>
+      
     </div>
   </section>
 
@@ -905,12 +913,16 @@
     music.pause();
     btn.textContent = "Play music";
   }
-}
 
+  
+}
+  function setBgVolume(val) {
+  document.getElementById("bgMusic").volume = val / 100;
+}
 
     window.addEventListener("load", () => {
   const music = document.getElementById("bgMusic");
-  music.volume = 0.2;
+  music.volume = 0.1;
 
   // Create splash overlay
   const splash = document.createElement("div");
@@ -1203,7 +1215,7 @@
     // ===== BETTER ROSE RAIN =====
     const roseImages = [
       "🎂",
-      "❤️",
+      "🌷",
       "💕",
       "🌹",
       "💐"
