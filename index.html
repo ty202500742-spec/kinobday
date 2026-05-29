@@ -10,12 +10,12 @@
     rel="stylesheet">
   <style>
     :root {
-      --pink: #c0392b;      
-  --rose: #8b0000;      
-  --lilac: #e74c3c;     
-  --lavender: #ffd0d0;   
-  --cream: #fff5f5;      
-  --dark: #2d1515;      
+      --pink: #c0392b;
+      --rose: #8b0000;
+      --lilac: #e74c3c;
+      --lavender: #ffd0d0;
+      --cream: #fff5f5;
+      --dark: #2d1515;
     }
 
     * {
@@ -254,7 +254,7 @@
       letter-spacing: 0.3rem;
       margin: 0;
       padding: 1.5rem 0;
-      color:  #ffaaaa;
+      color: #ffaaaa;
       background: white;
     }
 
@@ -290,7 +290,7 @@
     .photo-placeholder {
       width: 100%;
       aspect-ratio: 4/3;
-     background: linear-gradient(135deg, #ffe0e0, #ffd0d0);
+      background: linear-gradient(135deg, #ffe0e0, #ffd0d0);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -482,7 +482,7 @@
     .note-card::before {
       content: '❝';
       font-size: 6rem;
-     color: #ffd0d0;
+      color: #ffd0d0;
       position: absolute;
       top: -1.5rem;
       left: 1.5rem;
@@ -689,62 +689,109 @@
     }
 
     .audio-wrap {
- background: linear-gradient(135deg, #fff0f0, #ffe8e8);
-  border-radius: 999px;
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
- border: 1.5px solid #ffaaaa;
-  font-family: 'Quicksand', sans-serif;
-}
-.audio-play-btn {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #c0392b, #8b0000);
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 3px 12px rgba(255,107,157,0.35);
-}
-.audio-play-btn:hover { transform: scale(1.1); box-shadow: 0 5px 18px rgba(255,107,157,0.5); }
-.audio-play-btn svg { width: 14px; height: 14px; fill: white; }
-.audio-label {
-  font-family: 'Dancing Script', cursive;
-  font-size: 14px; color: #993556; white-space: nowrap;
-}
-.audio-bar-wrap {
-  flex: 1; height: 5px;
-  background: #f4c0d1; border-radius: 99px;
-  overflow: hidden; cursor: pointer;
-}
-.audio-bar-fill {
-  height: 100%;
-  background: linear-gradient(135deg, #c0392b, #8b0000);
-  border-radius: 99px; width: 0%;
-  transition: width 0.1s linear;
-}
-.audio-time { font-size: 11px; color: #c77dff; font-weight: 600; min-width: 32px; text-align: right; }
-.audio-petals { font-size: 14px; flex-shrink: 0; }
+      background: linear-gradient(135deg, #fff0f0, #ffe8e8);
+      border-radius: 999px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      border: 1.5px solid #ffaaaa;
+      font-family: 'Quicksand', sans-serif;
+    }
 
+    .audio-play-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c0392b, #8b0000);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 3px 12px rgba(255, 107, 157, 0.35);
+    }
 
+    .audio-play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 18px rgba(255, 107, 157, 0.5);
+    }
+
+    .audio-play-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: white;
+    }
+
+    .audio-label {
+      font-family: 'Dancing Script', cursive;
+      font-size: 14px;
+      color: #993556;
+      white-space: nowrap;
+    }
+
+    .audio-bar-wrap {
+      flex: 1;
+      height: 5px;
+      background: #f4c0d1;
+      border-radius: 99px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .audio-bar-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #c0392b, #8b0000);
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    .audio-time {
+      font-size: 11px;
+      color: #c77dff;
+      font-weight: 600;
+      min-width: 32px;
+      text-align: right;
+    }
+
+    .audio-petals {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 
 <body>
+  <audio id="bgMusic" loop>
+    <source src="audio/music.mp3" type="audio/mpeg">
+  </audio>
 
   <div class="hearts-bg" id="heartsBg"></div>
 
   <nav>
     <a href="#home" class="nav-logo">happy birthday</a>
-    <div class="nav-links">
-      <a href="#home">Happy birthday</a>
-      <a href="#ouranni">Pictures of us</a>
-      <a href="#monthsary">Our Memories</a>
-      <a href="#lovenote">Birthday Note</a>
-    </div>
+   <div class="nav-links">
+  <a href="#home">Happy birthday</a>
+  <a href="#ouranni">Pictures of us</a>
+  <a href="#monthsary">Our Memories</a>
+  <a href="#lovenote">Birthday Note</a>
+  <button id="musicToggleBtn" onclick="toggleBgMusic()" style="
+    background: var(--lavender);
+    border: 2px solid transparent;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    transition: all 0.25s;
+  ">Pause music</button>
+</div>
   </nav>
 
   <section id="home">
@@ -752,22 +799,24 @@
     <h1 class="hero-title">Happy 23rd Birthday Kino!</h1>
     <p class="hero-sub">From your alu</p>
     <p class="hero-msg">
-      
+
       i hope you'll enjoy this day of yours, and my gift mwamwa
     </p>
     <div class="audio-wrap" style="max-width:420px;margin-bottom:1.5rem;">
-  <button class="audio-play-btn" onclick="toggleAudio(this, 'audHero')" aria-label="Play greeting">
-    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-  </button>
-  <span class="audio-label">Play me💌</span>
-  <div class="audio-bar-wrap" onclick="seekAud(event,'audHero')">
-    <div class="audio-bar-fill" id="fillHero"></div>
-  </div>
-  <span class="audio-time" id="timeHero">0:00</span>
-  <span class="audio-petals">🌸</span>
-  <audio id="audHero" src="audio/greeting.aac"></audio>
-</div>
-<a href="#ouranni" class="hero-btn">See the first part hehe</a>
+      <button class="audio-play-btn" onclick="toggleAudio(this, 'audHero')" aria-label="Play greeting">
+        <svg viewBox="0 0 24 24">
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+      </button>
+      <span class="audio-label">Play me💌</span>
+      <div class="audio-bar-wrap" onclick="seekAud(event,'audHero')">
+        <div class="audio-bar-fill" id="fillHero"></div>
+      </div>
+      <span class="audio-time" id="timeHero">0:00</span>
+      <span class="audio-petals">🌸</span>
+      <audio id="audHero" src="audio/greeting.aac"></audio>
+    </div>
+    <a href="#ouranni" class="hero-btn">See the first part hehe</a>
     <div class="big-age">23</div>
   </section>
 
@@ -791,7 +840,7 @@
     </div>
   </section>
 
-  <div class="wavy-sep"> 🌹 🌹 🌹  </div>
+  <div class="wavy-sep"> 🌹 🌹 🌹 </div>
 
   <section id="lovenote">
     <div class="section-inner">
@@ -799,48 +848,101 @@
       <p class="section-sub">I know this is'nt a real letter but its from my heart, I love you forever</p>
       <div class="note-card">
         <p class="note-text">‎My dearest kino
-‎
-‎Happy 23rd birthday!! I'm so happy that you turned 23 this year, 
-now you're more of a mommy na, hahahahahha jk lng, but I'd like that. 
-I hope you'll enjoy this special day of yours, it may not be special to you, 
-because you hate your birthday, but it is to me. Its to celebrate the day you were born, 
-the day where you'd grow up each year. I dont want to sound really formal, I just want to let you know that I love you super muchhh mwamwa, 
-you have been the greatest gift I have wished for and received, I hope you will appreciate this small gift that I made for you, for your special day. 
-Theres a surprise for you at the bottom, its not much but you should see what it does hehe.</p>
-<p class="note-from">— Your Alu ❤️</p>
+          ‎
+          ‎Happy 23rd birthday!! I'm so happy that you turned 23 this year,
+          now you're more of a mommy na, hahahahahha jk lng, but I'd like that.
+          I hope you'll enjoy this special day of yours, it may not be special to you,
+          because you hate your birthday, but it is to me. Its to celebrate the day you were born,
+          the day where you'd grow up each year. I dont want to sound really formal, I just want to let you know that I
+          love you super muchhh mwamwa,
+          you have been the greatest gift I have wished for and received, I hope you will appreciate this small gift
+          that I made for you, for your special day.
+          Theres a surprise for you at the bottom, its not much but you should see what it does hehe.</p>
+        <p class="note-from">— Your Alu ❤️</p>
       </div>
-       <div class="audio-wrap" style="max-width:420px;margin:1.5rem auto;">
-    <button class="audio-play-btn" onclick="toggleAudio(this, 'audLove')" aria-label="Play love note">
-      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-    </button>
-    <span class="audio-label">Play me 💕</span>
-    <div class="audio-bar-wrap" onclick="seekAud(event,'audLove')">
-      <div class="audio-bar-fill" id="fillLove"></div>
-    </div>
-    <span class="audio-time" id="timeLove">0:00</span>
-    <span class="audio-petals">🌹</span>
-    <audio id="audLove" src="audio/birthdaynote.aac"></audio>
-  </div>
+      <div class="audio-wrap" style="max-width:420px;margin:1.5rem auto;">
+        <button class="audio-play-btn" onclick="toggleAudio(this, 'audLove')" aria-label="Play love note">
+          <svg viewBox="0 0 24 24">
+            <polygon points="5,3 19,12 5,21" />
+          </svg>
+        </button>
+        <span class="audio-label">Play me 💕</span>
+        <div class="audio-bar-wrap" onclick="seekAud(event,'audLove')">
+          <div class="audio-bar-fill" id="fillLove"></div>
+        </div>
+        <span class="audio-time" id="timeLove">0:00</span>
+        <span class="audio-petals">🌹</span>
+        <audio id="audLove" src="audio/bdaynote.aac"></audio>
+      </div>
     </div>
   </section>
 
   <div class="cake-section" id="cakeSection">
-  <span class="cake-emoji">🎂</span>
-  <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
-  <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
+    <span class="cake-emoji">🎂</span>
+    <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
+    <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
 
- 
 
-  <div id="roseRainWrap">
-    <button id="roseRainBtn" onclick="toggleRoseRain()">press me</button>
-    <p class="btn-hint">press it hehe</p>
+
+    <div id="roseRainWrap">
+      <button id="roseRainBtn" onclick="toggleRoseRain()">press me</button>
+      <p class="btn-hint">press it hehe</p>
+    </div>
   </div>
-</div>
 
   <!-- Hidden offscreen canvas pool for rendering 3D roses -->
   <div id="rosePool" style="position:fixed;left:-9999px;top:-9999px;pointer-events:none;"></div>
 
   <script>
+
+    function toggleBgMusic() {
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicToggleBtn");
+  if (music.paused) {
+    music.play();
+    btn.textContent = "Pause music";
+  } else {
+    music.pause();
+    btn.textContent = "Play music";
+  }
+}
+
+
+    window.addEventListener("load", () => {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.2;
+
+  // Create splash overlay
+  const splash = document.createElement("div");
+  splash.style.cssText = `
+    position: fixed; inset: 0; z-index: 9999;
+    background: linear-gradient(160deg, #fff0f0, #ffe8e8);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1.2rem;
+    font-family: 'Dancing Script', cursive;
+  `;
+  splash.innerHTML = `
+    <div style="font-size:3rem">🌹</div>
+    <div style="font-size:2.2rem; color:#8b0000; font-weight:700">Happy Birthday, Kino!</div>
+    <button style="
+      background: linear-gradient(135deg,#c0392b,#8b0000);
+      color:white; border:none; border-radius:999px;
+      padding:0.9rem 2.4rem; font-size:1.2rem;
+      font-family:'Dancing Script',cursive; font-weight:700;
+      cursor:pointer; box-shadow:0 6px 20px rgba(192,57,43,0.4);
+    ">Open your gift 💌</button>
+  `;
+
+  document.body.appendChild(splash);
+
+  splash.querySelector("button").addEventListener("click", () => {
+    music.play();
+    splash.style.transition = "opacity 0.8s";
+    splash.style.opacity = "0";
+    setTimeout(() => splash.remove(), 800);
+  });
+});
+
     // ===== FLOATING HEARTS =====
     const hb = document.getElementById('heartsBg');
     const emojis = ['💕', '💖', '🌸', '✨', '💗', '🌷', '💓', '⭐', '💝'];
@@ -908,9 +1010,9 @@ Theres a surprise for you at the bottom, its not much but you should see what it
     months.forEach((m, i) => {
       const item = document.createElement('div');
       item.className = 'tl-item';
-      const petalEmojis = ['🌸','💕','🌹','💖','🌷','✨','💗','🌸','💝','🌷','💕','🌹'];
+      const petalEmojis = ['🌸', '💕', '🌹', '💖', '🌷', '✨', '💗', '🌸', '💝', '🌷', '💕', '🌹'];
 
-item.innerHTML = `
+      item.innerHTML = `
   <div class="tl-dot"></div>
   <div class="tl-content">
     <div class="tl-month">${m.label}</div>
@@ -937,55 +1039,55 @@ item.innerHTML = `
 
 
     const playIcon = '<polygon points="5,3 19,12 5,21"/>';
-const pauseIcon = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    const pauseIcon = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
 
-function fmtTime(s) {
-  const m = Math.floor(s/60), sec = Math.floor(s%60);
-  return m + ':' + (sec < 10 ? '0' : '') + sec;
-}
+    function fmtTime(s) {
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
 
-function toggleAudio(btn, audId) {
-  const aud = document.getElementById(audId);
-  const svg = btn.querySelector('svg');
-  if (aud.paused) {
-    document.querySelectorAll('audio').forEach(a => {
-      if (a !== aud && !a.paused) {
-        a.pause();
-        const b = document.querySelector(`[onclick*="${a.id}"] svg`);
-        if (b) b.innerHTML = playIcon;
-      }
-    });
-    aud.play();
-    svg.innerHTML = pauseIcon;
-    (function tick() {
-      if (!aud.paused) {
-        const idx = audId.replace('aud','');
-        const pct = aud.duration ? (aud.currentTime / aud.duration) * 100 : 0;
-        document.getElementById('fill'+idx).style.width = pct + '%';
-        document.getElementById('time'+idx).textContent = fmtTime(aud.currentTime);
-        requestAnimationFrame(tick);
-      }
-    })();
-    aud.onended = () => {
-      svg.innerHTML = playIcon;
-      const idx = audId.replace('aud','');
-      document.getElementById('fill'+idx).style.width = '0%';
-      document.getElementById('time'+idx).textContent = '0:00';
-    };
-  } else {
-    aud.pause();
-    svg.innerHTML = playIcon;
+    function toggleAudio(btn, audId) {
+      const aud = document.getElementById(audId);
+      const svg = btn.querySelector('svg');
+      if (aud.paused) {
+        document.querySelectorAll('audio').forEach(a => {
+  if (a !== aud && a.id !== 'bgMusic' && !a.paused) {
+    a.pause();
+    const b = document.querySelector(`[onclick*="${a.id}"] svg`);
+    if (b) b.innerHTML = playIcon;
   }
-}
+});
+        aud.play();
+        svg.innerHTML = pauseIcon;
+        (function tick() {
+          if (!aud.paused) {
+            const idx = audId.replace('aud', '');
+            const pct = aud.duration ? (aud.currentTime / aud.duration) * 100 : 0;
+            document.getElementById('fill' + idx).style.width = pct + '%';
+            document.getElementById('time' + idx).textContent = fmtTime(aud.currentTime);
+            requestAnimationFrame(tick);
+          }
+        })();
+        aud.onended = () => {
+          svg.innerHTML = playIcon;
+          const idx = audId.replace('aud', '');
+          document.getElementById('fill' + idx).style.width = '0%';
+          document.getElementById('time' + idx).textContent = '0:00';
+        };
+      } else {
+        aud.pause();
+        svg.innerHTML = playIcon;
+      }
+    }
 
-function seekAud(e, audId) {
-  const aud = document.getElementById(audId);
-  if (!aud.duration) return;
-  const pct = e.offsetX / e.currentTarget.offsetWidth;
-  aud.currentTime = pct * aud.duration;
-  const idx = audId.replace('aud','');
-  document.getElementById('fill'+idx).style.width = (pct * 100) + '%';
-}
+    function seekAud(e, audId) {
+      const aud = document.getElementById(audId);
+      if (!aud.duration) return;
+      const pct = e.offsetX / e.currentTarget.offsetWidth;
+      aud.currentTime = pct * aud.duration;
+      const idx = audId.replace('aud', '');
+      document.getElementById('fill' + idx).style.width = (pct * 100) + '%';
+    }
 
 
     const vidObserver = new IntersectionObserver(entries => {
@@ -1106,15 +1208,7 @@ function seekAud(e, audId) {
       "🌹",
       "💐"
     ];
-    const rose = document.getElementById("roseText");
-
-    rose.innerHTML = roseImages[0];
-
-    rose.style.color = "hotpink";
-    rose.style.fontSize = "40px";
-    rose.style.fontFamily = "cursive";
-    rose.style.fontWeight = "bold";
-    rose.style.textShadow = "0 0 10px pink";
+   
 
     function spawnFallingRose() {
       const el = document.createElement('div');
