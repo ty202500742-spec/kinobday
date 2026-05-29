@@ -1340,14 +1340,16 @@
 
     // Your own message lines to show while music plays
 const surpriseLines = [
-  "Ikaw parin ang uwian",
-  "Mahal ikaw ang uuwian...",
-  "At kung umabot man sa dulo, at tatanda na tayo",
-  "Ikaw parin ang uuwian",
-  "At kahit na mag hirap tayo",
-  "'di na magbabago",
-  "Ikaw parin ang uuwian",
-  "ikaw lang ang uuwian",
+  { text: "Ikaw parin ang uwian", delay: 0 },
+  { text: "Mahal ikaw ang uuwian...", delay: 8000 },
+  { text: "At kung umabot man sa dulo, at tatanda na tayo", delay: 15000 },
+  { text: "Ikaw parin ang uuwian", delay: 24000 },
+  { text: "At kahit na mag hirap tayo", delay: 31000 },
+  { text: "'di na magbabago", delay: 36000 },
+  { text: "Ikaw parin ang uuwian", delay: 42000 },
+  { text: "ikaw parin", delay: 50000 },
+  { text: "ohh ikaw parin", delay: 55000 },
+  { text: "Ikaw lang ang uuwian", delay: 58000 },
 ];
 
 function toggleRoseRain() {
@@ -1375,18 +1377,17 @@ function toggleRoseRain() {
   msgEl.style.opacity = '0';
   msgEl.innerHTML = '';
 
-  let lineIndex = 0;
-  function showNextLine() {
-    if (lineIndex < surpriseLines.length) {
-      msgEl.innerHTML += (lineIndex > 0 ? '<br>' : '') + surpriseLines[lineIndex];
-      lineIndex++;
-      setTimeout(showNextLine, 3200);
-    }
-  }
   setTimeout(() => {
-    msgEl.style.opacity = '1';
-    showNextLine();
-  }, 600);
+  msgEl.style.opacity = '1';
+
+  surpriseLines.forEach(line => {
+    setTimeout(() => {
+      msgEl.innerHTML +=
+        (msgEl.innerHTML ? '<br>' : '') + line.text;
+    }, line.delay);
+  });
+
+}, 600);
 
   // Start rose rain in background
   raining = true;
