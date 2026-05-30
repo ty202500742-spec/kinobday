@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 23rd Birthday, Baby ko 🎂</title>
+  <title>Happy 23rd Birthday, kino🎂</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap"
     rel="stylesheet">
@@ -189,7 +189,7 @@
     .big-age {
       font-family: 'Pacifico', cursive;
       font-size: clamp(5rem, 18vw, 11rem);
-      color: rgba(255, 107, 157, 0.12);
+      color: rgba(255, 0, 85, 0.12);
       position: absolute;
       bottom: -1rem;
       right: 5%;
@@ -809,6 +809,12 @@
   display: flex !important;
 }
 
+.cake-emoji:active {
+  animation: none;
+  transform: scale(1.3);
+  transition: transform 0.1s;
+}
+
   </style>
 </head>
 
@@ -890,7 +896,7 @@
       <span class="audio-petals">🌸</span>
       <audio id="audHero" src="audio/greeting.aac"></audio>
     </div>
-    <a href="#ouranni" class="hero-btn">See the first part hehe</a>
+    <a href="#ouranni" class="hero-btn">See the first part, enjoy!</a>
     <div class="big-age">23</div>
   </section>
 
@@ -957,8 +963,9 @@
   </section>
 
   <div class="cake-section" id="cakeSection">
-  <span class="cake-emoji">🎂</span>
-  <h2 class="section-title" style="margin-top:1rem">Make a wish! 🕯️</h2>
+  <span class="cake-emoji" onclick="playCakeSound()" style="cursor:pointer;" title="Click me!">🎂</span>
+<audio id="cakeSound" src="audio/bdaysong.aac"></audio>
+  <h2 class="section-title" style="margin-top:1rem">Make a wish!</h2>
   <p style="color:#a07ab0;font-size:0.95rem;margin-top:0.4rem">Happy 23rd birthday Kino, mwamwa 💕</p>
 
   <div id="roseRainWrap">
@@ -996,7 +1003,7 @@
     font-size:1.3rem; font-weight:700;
     cursor:pointer;
     box-shadow:0 4px 18px rgba(192,57,43,0.4);
-  ">mwamwa 💕</button>
+  ">mwamwa💕(press to end)</button>
 </div>
 
 <audio id="surpriseAudio" src="audio/surprise.mp3"></audio>
@@ -1005,6 +1012,12 @@
   <div id="rosePool" style="position:fixed;left:-9999px;top:-9999px;pointer-events:none;"></div>
 
   <script>
+    function playCakeSound() {
+  const sound = document.getElementById('cakeSound');
+  sound.currentTime = 0;
+  sound.play();
+}
+
 
     function toggleBgMusic() {
   const music = document.getElementById("bgMusic");
@@ -1293,7 +1306,7 @@
 
     // ===== BETTER ROSE RAIN =====
     const roseImages = [
-      "🎂",
+      "🌹",
       "🌷",
       "💕",
       "🌹",
@@ -1338,9 +1351,9 @@
       setTimeout(() => el.remove(), duration * 1000);
     }
 
-    // Your own message lines to show while music plays
+    
 const surpriseLines = [
-  { text: "Ikaw parin ang uwian", delay: 0 },
+  { text: "Ikaw parin ang uuwian", delay: 1000 },
   { text: "Mahal ikaw ang uuwian...", delay: 8000 },
   { text: "At kung umabot man sa dulo, at tatanda na tayo", delay: 15000 },
   { text: "Ikaw parin ang uuwian", delay: 24000 },
@@ -1348,7 +1361,7 @@ const surpriseLines = [
   { text: "'di na magbabago", delay: 36000 },
   { text: "Ikaw parin ang uuwian", delay: 42000 },
   { text: "ikaw parin", delay: 50000 },
-  { text: "ohh ikaw parin", delay: 55000 },
+  { text: "ohh ikaw parin", delay: 54000 },
   { text: "Ikaw lang ang uuwian", delay: 58000 },
 ];
 
@@ -1361,7 +1374,6 @@ function toggleRoseRain() {
     return;
   }
 
-  // Stop bg music, play surprise song, show overlay
   const bgMusic = document.getElementById('bgMusic');
   bgMusic.pause();
 
@@ -1372,24 +1384,75 @@ function toggleRoseRain() {
   surpriseAudio.volume = 0.85;
   surpriseAudio.play();
 
-  // Show message lines one by one
   const msgEl = document.getElementById('surpriseMsg');
-  msgEl.style.opacity = '0';
   msgEl.innerHTML = '';
 
-  setTimeout(() => {
+
+  if (!document.getElementById('lyricStyle')) {
+    const style = document.createElement('style');
+    style.id = 'lyricStyle';
+   style.textContent = `
+      .lyric-line {
+        opacity: 0;
+        transition: opacity 1.2s ease;
+        font-family: 'Dancing Script', cursive;
+        font-size: clamp(1.6rem, 5vw, 2.8rem);
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        text-align: center;
+        white-space: pre-line;
+        line-height: 1.9;
+      }
+      .lyric-line.visible { opacity: 1; }
+    `;
+    document.head.appendChild(style);
+  }
+
+ msgEl.style.position = 'relative';
+  msgEl.style.minHeight = '8rem';
+  msgEl.style.width = '100%';
   msgEl.style.opacity = '1';
 
-  surpriseLines.forEach(line => {
+  let currentLine = null;
+
+  surpriseLines.forEach((line, i) => {
+    const next = surpriseLines[i + 1];
+    const showAt = line.delay;
+    // Fade out 1.5s before the next line, or 4s after if last line
+    const hideAt = next ? next.delay - 1500 : line.delay + 4000;
+
+    // Fade in
     setTimeout(() => {
-      msgEl.innerHTML +=
-        (msgEl.innerHTML ? '<br>' : '') + line.text;
-    }, line.delay);
+      if (currentLine) {
+        currentLine.classList.remove('visible');
+        // Remove old line after its fade-out
+        const old = currentLine;
+        setTimeout(() => old.remove(), 1300);
+      }
+      const el = document.createElement('div');
+      el.className = 'lyric-line';
+      el.textContent = line.text;
+      msgEl.appendChild(el);
+      // Trigger fade in on next frame
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+      currentLine = el;
+    }, showAt);
+
+    // Fade out
+    setTimeout(() => {
+      if (currentLine && currentLine.textContent === line.text) {
+        currentLine.classList.remove('visible');
+        const old = currentLine;
+        setTimeout(() => old.remove(), 1300);
+        currentLine = null;
+      }
+    }, hideAt);
   });
 
-}, 600);
-
-  // Start rose rain in background
   raining = true;
   btn.textContent = 'Happy birthday, my love!';
 
